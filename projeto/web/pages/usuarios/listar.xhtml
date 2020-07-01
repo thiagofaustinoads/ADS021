@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="titulo">Meu Projeto Web</ui:define>
+    <ui:define name="conteudo">
+        <h:commandLink value="Adicionar Usuário" action="#{usuarioMB.criar()}" /><br/>
+        <p:dataTable id="dataTableUsuario" value="#{usuarioMB.lista}" var="usuario"
+                     paginator="true" rows="5" paginatorPosition="bottom">
+            <f:facet name="header">Lista de Usuários</f:facet>                
+            <p:column headerText="Nome" sortBy="#{usuario.nome}">
+                <h:outputText value="#{usuario.nome}"/>
+            </p:column>
+            <p:column headerText="Ação">
+                <p:commandLink value="Editar" action="#{usuarioMB.editar(usuario)}" />
+                <h:outputText value=" | "/>
+                <p:commandLink value="Remover" action="#{usuarioMB.remover(usuario)}"
+                               update="dataTableUsuario"
+                               onstart="return confirm('Deseja remover o usuário?')" />
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>

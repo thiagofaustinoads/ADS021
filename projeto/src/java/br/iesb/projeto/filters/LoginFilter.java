@@ -1,6 +1,6 @@
 package br.iesb.projeto.filters;
 
-import br.iesb.projeto.managedbeans.UsuarioMB;
+import br.iesb.projeto.managedbeans.LoginMB;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -21,10 +21,10 @@ public class LoginFilter implements Filter {
         HttpServletRequest requisicao = (HttpServletRequest) request;
         HttpServletResponse resposta = (HttpServletResponse) response;
         HttpSession sessao = requisicao.getSession();
-        UsuarioMB usuarioMB = (UsuarioMB) sessao.getAttribute("usuarioMB");
+        LoginMB loginMB = (LoginMB) sessao.getAttribute("loginMB");
         String uriLogin = requisicao.getContextPath() + "/login.jsf";
 
-        if (usuarioMB != null && usuarioMB.isAutenticado()) {
+        if (loginMB != null && loginMB.isAutenticado()) {
             chain.doFilter(request, response);
         } else {
             resposta.sendRedirect(uriLogin);

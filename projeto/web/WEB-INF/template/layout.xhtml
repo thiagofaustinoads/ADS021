@@ -13,26 +13,30 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:layout fullPage="true" >
-                <p:layoutUnit id="top" position="north" size="70">
+            <p:layout fullPage="true">
+                <p:layoutUnit id="top" position="north" size="70" style="border: none">
                     <p:menubar>
+                        <p:menuitem value="" icon="ui-icon-home" action="/pages/index.jsf?faces-redirect=true"/>
                         <p:submenu label="Cadastros">
                             <p:menuitem value="Item 1" action="#"/>
                             <p:menuitem value="Item 2" action="#"/>
                             <p:menuitem value="Item 3" action="#"/>
                         </p:submenu>
+                         <p:submenu label="Administração">
+                            <p:menuitem value="Usuários" action="/pages/usuarios/listar.jsf?faces-redirect=true"/>
+                        </p:submenu>
                         <f:facet name="options">
-                            <h:outputText style="margin-right:20px" value="Olá #{usuarioMB.usuario.nome}"/>
-                            <p:commandButton type="submit" value="Sair" icon="ui-icon-extlink" action="#{usuarioMB.sair}"/>
+                            <h:outputText style="margin-right:20px" value="Olá #{loginMB.usuario.nome}"/>
+                            <p:commandButton type="submit" value="Sair" icon="ui-icon-extlink" action="#{loginMB.sair}"/>
                         </f:facet>
                     </p:menubar>
                 </p:layoutUnit>
 
-                <p:layoutUnit id="bottom" position="south" size="40">
+                <p:layoutUnit id="bottom" position="south" size="40" style="border: none">
                     Copyright © 2020
                 </p:layoutUnit>
 
-                <p:layoutUnit id="center" position="center">
+                <p:layoutUnit id="center" position="center" style="border: none; padding: 8px">
                     <ui:insert name="conteudo"/>
                 </p:layoutUnit>
             </p:layout>
