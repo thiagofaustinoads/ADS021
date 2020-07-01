@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="titulo">Meu Projeto Web</ui:define>
+    <ui:define name="conteudo">
+        <h:commandLink value="Adicionar Area" action="#{areaMB.criar()}" /><br/>
+        <p:dataTable id="dataTableArea" value="#{areaMB.lista}" var="area"
+                     paginator="true" rows="5" paginatorPosition="bottom">
+            <f:facet name="header">Lista de Areas</f:facet>
+            <p:column headerText="Condominio" sortBy="#{area.condominio}">
+                <h:outputText value="#{area.condominio}"/>
+            </p:column>
+            <p:column headerText="Area" sortBy="#{area.area}">
+                <h:outputText value="#{area.area}"/>
+            </p:column>
+            <p:column headerText="Situacao" sortBy="#{area.situacao}">
+                <h:outputText value="#{area.situacao}"/>
+            </p:column>
+            <p:column headerText="DataReserva" sortBy="#{area.datareserva}">
+                <h:outputText value="#{area.datareserva}"/>
+            </p:column>
+            <p:column headerText="Unidade" sortBy="#{area.unidade}">
+                <h:outputText value="#{area.unidade}"/>
+            </p:column>
+
+            <p:column headerText="Ação">
+                <p:commandLink value="Editar" action="#{areaMB.editar(area)}" />
+                <h:outputText value=" | "/>
+                <p:commandLink value="Remover" action="#{areaMB.remover(area)}"
+                               update="dataTableArea"
+                               onstart="return confirm('Deseja remover o area?')" />
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>
+
