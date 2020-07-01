@@ -22,8 +22,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Area.findByCondominio", query = "SELECT m FROM Area m WHERE m.condominio = :condominio")
     , @NamedQuery(name = "Area.findByArea", query = "SELECT m FROM Area m WHERE m.area = :area")
     , @NamedQuery(name = "Area.findBySituacao", query = "SELECT m FROM Area m WHERE m.situacao = :situacao")
-    , @NamedQuery(name = "Area.findByDataReserva", query = "SELECT m FROM Area m WHERE m.datareserva = :datareserva")
-    , @NamedQuery(name = "Area.findByUnidade", query = "SELECT m FROM Area m WHERE m.unidade = :unidade")
             })
 public class Area implements Serializable {
 
@@ -42,13 +40,6 @@ public class Area implements Serializable {
     @Basic(optional = false)
     @Column(name = "situacao")
     private int situacao;
-    @Basic(optional = false)
-    @Column(name = "datareserva")
-    private int datareserva;
-    @Basic(optional = false)
-    @Column(name = "unidade")
-    private String unidade;
-
 
 
     public Area() {
@@ -58,13 +49,12 @@ public class Area implements Serializable {
         this.id = id;
     }
 
-    public Area(Integer id, int condominio, String area, int situacao, int datareserva, String unidade) {
+    public Area(Integer id, int condominio, String area, int situacao) {
         this.id = id;
         this.condominio = condominio;
         this.area = area;
         this.situacao = situacao;
-        this.datareserva = datareserva;
-        this.unidade = unidade;
+
 
     }
 
@@ -100,21 +90,7 @@ public class Area implements Serializable {
         this.situacao = situacao;
     }
 
-    public int getDataReserva() {
-        return datareserva;
-    }
 
-    public void setDataReserva(int datareserva) {
-        this.datareserva = datareserva;
-    }
-
-    public String getUnidade() {
-        return unidade;
-    }
-
-    public void setUnidade(String unidade) {
-        this.unidade = unidade;
-    }
 
    
 

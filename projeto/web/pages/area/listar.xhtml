@@ -20,12 +20,6 @@
             <p:column headerText="Situacao" sortBy="#{area.situacao}">
                 <h:outputText value="#{area.situacao}"/>
             </p:column>
-            <p:column headerText="DataReserva" sortBy="#{area.datareserva}">
-                <h:outputText value="#{area.datareserva}"/>
-            </p:column>
-            <p:column headerText="Unidade" sortBy="#{area.unidade}">
-                <h:outputText value="#{area.unidade}"/>
-            </p:column>
 
             <p:column headerText="Ação">
                 <p:commandLink value="Editar" action="#{areaMB.editar(area)}" />
